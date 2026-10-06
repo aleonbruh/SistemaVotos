@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaVotos
@@ -77,8 +70,7 @@ namespace SistemaVotos
                     cmd.ExecuteNonQuery();
                 }
             }
-
-            MessageBox.Show("Parito guardado correctamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Partido {txtSiglas.Text.Trim()} guardado correctamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
