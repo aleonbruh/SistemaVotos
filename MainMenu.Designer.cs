@@ -30,11 +30,11 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.electoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.partidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.candidatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.centrosDeVotacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mesasDeVotacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.electoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarVotoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resultadosDeAlcaldeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,13 +72,6 @@
             this.gestionToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.gestionToolStripMenuItem.Text = "Gestion";
             // 
-            // electoresToolStripMenuItem
-            // 
-            this.electoresToolStripMenuItem.Name = "electoresToolStripMenuItem";
-            this.electoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.electoresToolStripMenuItem.Text = "Electores";
-            this.electoresToolStripMenuItem.Click += new System.EventHandler(this.electoresToolStripMenuItem_Click);
-            // 
             // partidosToolStripMenuItem
             // 
             this.partidosToolStripMenuItem.Name = "partidosToolStripMenuItem";
@@ -106,6 +99,13 @@
             this.mesasDeVotacionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mesasDeVotacionToolStripMenuItem.Text = "Mesas de Votacion";
             this.mesasDeVotacionToolStripMenuItem.Click += new System.EventHandler(this.mesasDeVotacionToolStripMenuItem_Click);
+            // 
+            // electoresToolStripMenuItem
+            // 
+            this.electoresToolStripMenuItem.Name = "electoresToolStripMenuItem";
+            this.electoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.electoresToolStripMenuItem.Text = "Electores";
+            this.electoresToolStripMenuItem.Click += new System.EventHandler(this.electoresToolStripMenuItem_Click);
             // 
             // registrarVotoToolStripMenuItem
             // 
@@ -175,11 +175,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainMenu";
-            this.Text = "MainMenu";
+            this.Text = "Sistema de Elecciones";
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

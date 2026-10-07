@@ -47,17 +47,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
+    <Compile Include="FrmCandidatoEditar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCandidatoEditar.Designer.cs">
+      <DependentUpon>FrmCandidatoEditar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCandidatos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmCandidatos.Designer.cs">
       <DependentUpon>FrmCandidatos.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCentros.cs">
+    <Compile Include="FrmCentroEditar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCentros.Designer.cs">
-      <DependentUpon>FrmCentros.cs</DependentUpon>
+    <Compile Include="FrmCentroEditar.Designer.cs">
+      <DependentUpon>FrmCentroEditar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMesas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMesas.Designer.cs">
+      <DependentUpon>FrmMesas.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmElectores.cs">
       <SubType>Form</SubType>
@@ -65,11 +77,11 @@
     <Compile Include="FrmElectores.Designer.cs">
       <DependentUpon>FrmElectores.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmMesas.cs">
+    <Compile Include="FrmCentros.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmMesas.Designer.cs">
-      <DependentUpon>FrmMesas.cs</DependentUpon>
+    <Compile Include="FrmCentros.Designer.cs">
+      <DependentUpon>FrmCentros.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPartidoEditar.cs">
       <SubType>Form</SubType>
@@ -110,6 +122,18 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SesionActual.cs" />
+    <EmbeddedResource Include="FrmCandidatoEditar.resx">
+      <DependentUpon>FrmCandidatoEditar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCandidatos.resx">
+      <DependentUpon>FrmCandidatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCentroEditar.resx">
+      <DependentUpon>FrmCentroEditar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCentros.resx">
+      <DependentUpon>FrmCentros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPartidoEditar.resx">
       <DependentUpon>FrmPartidoEditar.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +154,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -143,6 +168,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gato.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

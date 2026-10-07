@@ -27,7 +27,7 @@ namespace SistemaVotos
         {
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
-                string query = "SELECT IdPartido, Nombre, Siglas, CASE WHEN Estado = 1 THEN 'Activo' ELSE 'Inactivo' END AS EstadoTexto FROM Partidos";
+                string query = "SELECT IdPartido, Nombre, Siglas, CASE WHEN Estado = 1 THEN 'Activo' ELSE 'Inactivo' END AS Estado FROM Partidos";
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);

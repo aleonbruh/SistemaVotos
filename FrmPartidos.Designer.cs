@@ -40,14 +40,14 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(29, 28);
+            this.txtBuscar.Location = new System.Drawing.Point(41, 32);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(255, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(236, 20);
             this.txtBuscar.TabIndex = 0;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(300, 26);
+            this.btnBuscar.Location = new System.Drawing.Point(284, 30);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 1;
@@ -58,14 +58,14 @@
             // dgvPartidos
             // 
             this.dgvPartidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPartidos.Location = new System.Drawing.Point(29, 64);
+            this.dgvPartidos.Location = new System.Drawing.Point(41, 59);
             this.dgvPartidos.Name = "dgvPartidos";
-            this.dgvPartidos.Size = new System.Drawing.Size(346, 150);
+            this.dgvPartidos.Size = new System.Drawing.Size(318, 150);
             this.dgvPartidos.TabIndex = 2;
             // 
             // btnNuevo
             // 
-            this.btnNuevo.Location = new System.Drawing.Point(29, 229);
+            this.btnNuevo.Location = new System.Drawing.Point(40, 215);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(75, 23);
             this.btnNuevo.TabIndex = 3;
@@ -75,7 +75,7 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(119, 229);
+            this.btnEditar.Location = new System.Drawing.Point(121, 215);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 23);
             this.btnEditar.TabIndex = 4;
@@ -85,7 +85,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(209, 229);
+            this.btnEliminar.Location = new System.Drawing.Point(202, 215);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 5;
@@ -95,7 +95,7 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(300, 229);
+            this.btnActualizar.Location = new System.Drawing.Point(283, 215);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 6;
