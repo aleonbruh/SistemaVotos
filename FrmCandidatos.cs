@@ -16,6 +16,7 @@ namespace SistemaVotos
         public FrmCandidatos()
         {
             InitializeComponent();
+            CargarCandidatos();
         }
 
         private void CargarCandidatos()
@@ -29,11 +30,6 @@ namespace SistemaVotos
                 dgvCandidatos.DataSource = dt;
                 dgvCandidatos.Columns["IdCandidato"].Visible = false;
             }
-        }
-
-        private void FrmCandidatos_Load(object sender, EventArgs e)
-        {
-            CargarCandidatos();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -70,7 +66,7 @@ namespace SistemaVotos
                     {
                         cmd.Parameters.AddWithValue("@id", id);
                         con.Open();
-                        cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();  
                     }
                 }
                 CargarCandidatos();

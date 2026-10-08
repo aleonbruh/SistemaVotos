@@ -30,11 +30,11 @@
         {
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.dgvPartidos = new System.Windows.Forms.DataGridView();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.dgvPartidos = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPartidos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,14 +54,6 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // dgvPartidos
-            // 
-            this.dgvPartidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPartidos.Location = new System.Drawing.Point(41, 59);
-            this.dgvPartidos.Name = "dgvPartidos";
-            this.dgvPartidos.Size = new System.Drawing.Size(318, 150);
-            this.dgvPartidos.TabIndex = 2;
             // 
             // btnNuevo
             // 
@@ -103,6 +95,17 @@
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
+            // dgvPartidos
+            // 
+            this.dgvPartidos.AllowUserToAddRows = false;
+            this.dgvPartidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPartidos.Location = new System.Drawing.Point(41, 59);
+            this.dgvPartidos.Name = "dgvPartidos";
+            this.dgvPartidos.ReadOnly = true;
+            this.dgvPartidos.RowHeadersVisible = false;
+            this.dgvPartidos.Size = new System.Drawing.Size(318, 150);
+            this.dgvPartidos.TabIndex = 2;
+            // 
             // FrmPartidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,10 +131,10 @@
 
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.DataGridView dgvPartidos;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.DataGridView dgvPartidos;
     }
 }

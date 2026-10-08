@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,89 @@ namespace SistemaVotos
         public FrmElectores()
         {
             InitializeComponent();
+            CargarElectores();
+        }
+
+        private void CargarElectores()
+        {
+            using (SqlConnection con = Conexion.ObtenerConexion())
+            {
+                string query = "SELECT e.IdElector, e.NombreCompleto AS 'Nombre Completo', e.DUI, e.FechaNacimiento, e.Direccion, c.Nombre AS Centro, m.NumeroMesa, CASE WHEN e.Estado = 1 THEN 'Activo' ELSE 'Inactivo' END AS Estado FROM Electores e INNER JOIN CentrosVotacion c ON e.IdCentro = c.IdCentro INNER JOIN MesasVotacion m ON e.IdMesa = m.IdMesa";
+                SqlDataAdapter da = new SqlDataAdapter(query, con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgvElectores.DataSource = dt;
+                dgvElectores.Columns["IdElector"].Visible = false;
+            }
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            using (FrmElectorEditar frm = new FrmElectorEditar())
+            {
+                frm.ShowDialog();
+                CargarElectores();
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (dgvElectores.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un elector para editar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            int id = Convert.ToInt32(dgvElectores.CurrentRow.Cells["IdElector"].Value);
+            using (FrmElectorEditar frm = new FrmElectorEditar(id))
+            {
+                frm.ShowDialog();
+                CargarElectores();
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvElectores.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un elector para eliminar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            int id = Convert.ToInt32(dgvElectores.CurrentRow.Cells["IdElector"].Value);
+            string nombre = dgvElectores.CurrentRow.Cells["Nombre Completo"].Value.ToString();
+            if (MessageBox.Show($"¿Está seguro de eliminar el elector '{nombre}'?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                using (SqlConnection con = Conexion.ObtenerConexion())
+                {
+                    string query = "UPDATE Electores SET Estado = 0 WHERE IdElector = @id";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                CargarElectores();
+            }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            CargarElectores();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection con = Conexion.ObtenerConexion())
+            {
+                string query = "SELECT e.IdElector, e.NombreCompleto AS 'Nombre Completo', e.DUI, e.FechaNacimiento, e.Direccion, c.Nombre AS Centro, m.NumeroMesa, CASE WHEN e.Estado = 1 THEN 'Activo' ELSE 'Inactivo' END AS Estado FROM Electores e INNER JOIN CentrosVotacion c ON e.IdCentro = c.IdCentro INNER JOIN MesasVotacion m ON e.IdMesa = m.IdMesa WHERE e.NombreCompleto LIKE @busqueda OR e.DUI LIKE @busqueda";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@busqueda", "%" + txtBusqueda.Text + "%");
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dgvElectores.DataSource = dt;
+                }
+            }
         }
     }
 }

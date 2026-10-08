@@ -28,23 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvCandidatos = new System.Windows.Forms.DataGridView();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.dgvCandidatos = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCandidatos)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvCandidatos
-            // 
-            this.dgvCandidatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCandidatos.Location = new System.Drawing.Point(29, 53);
-            this.dgvCandidatos.Name = "dgvCandidatos";
-            this.dgvCandidatos.Size = new System.Drawing.Size(458, 150);
-            this.dgvCandidatos.TabIndex = 0;
             // 
             // btnNuevo
             // 
@@ -103,21 +95,31 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // dgvCandidatos
+            // 
+            this.dgvCandidatos.AllowUserToAddRows = false;
+            this.dgvCandidatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCandidatos.Location = new System.Drawing.Point(31, 54);
+            this.dgvCandidatos.Name = "dgvCandidatos";
+            this.dgvCandidatos.ReadOnly = true;
+            this.dgvCandidatos.RowHeadersVisible = false;
+            this.dgvCandidatos.Size = new System.Drawing.Size(428, 150);
+            this.dgvCandidatos.TabIndex = 8;
+            // 
             // FrmCandidatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(521, 259);
+            this.ClientSize = new System.Drawing.Size(498, 259);
+            this.Controls.Add(this.dgvCandidatos);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnNuevo);
-            this.Controls.Add(this.dgvCandidatos);
             this.Name = "FrmCandidatos";
             this.Text = "Candidatos";
-            this.Load += new System.EventHandler(this.FrmCandidatos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCandidatos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -125,13 +127,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvCandidatos;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.TextBox txtBusqueda;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.DataGridView dgvCandidatos;
     }
 }

@@ -65,6 +65,18 @@
     <Compile Include="FrmCentroEditar.Designer.cs">
       <DependentUpon>FrmCentroEditar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmElectorEditar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmElectorEditar.Designer.cs">
+      <DependentUpon>FrmElectorEditar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMesaNueva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMesaNueva.Designer.cs">
+      <DependentUpon>FrmMesaNueva.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMesas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +145,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCentros.resx">
       <DependentUpon>FrmCentros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmElectorEditar.resx">
+      <DependentUpon>FrmElectorEditar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmElectores.resx">
+      <DependentUpon>FrmElectores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMesaNueva.resx">
+      <DependentUpon>FrmMesaNueva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMesas.resx">
+      <DependentUpon>FrmMesas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPartidoEditar.resx">
       <DependentUpon>FrmPartidoEditar.cs</DependentUpon>

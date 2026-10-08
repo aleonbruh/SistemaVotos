@@ -35,36 +35,48 @@ namespace SistemaVotos
         private void electoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmElectores frm = new FrmElectores();
+            frm.MdiParent = this;
+            frm.StartPosition = FormStartPosition.CenterParent;
             frm.Show();
         }
 
         private void partidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmPartidos frm = new FrmPartidos();
+            frm.MdiParent = this;
+            frm.StartPosition = FormStartPosition.CenterParent;
             frm.Show();
         }
 
         private void candidatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCandidatos frm = new FrmCandidatos();
+            frm.MdiParent = this;
+            frm.StartPosition = FormStartPosition.CenterParent;
             frm.Show();
         }
 
         private void centrosDeVotacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCentros frm = new FrmCentros();
+            frm.MdiParent = this;
+            frm.StartPosition = FormStartPosition.CenterParent;
             frm.Show();
         }
 
         private void mesasDeVotacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmMesas frm = new FrmMesas();
+            frm.MdiParent = this;
+            frm.StartPosition = FormStartPosition.CenterParent;
             frm.Show();
         }
 
         private void registrarVotoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmVoto frm = new FrmVoto();
+            frm.MdiParent = this;
+            frm.StartPosition = FormStartPosition.CenterParent;
             frm.Show();
         }
     }

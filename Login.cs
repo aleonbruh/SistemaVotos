@@ -18,15 +18,6 @@ namespace SistemaVotos
             InitializeComponent();
         }
 
-        private void Login_Load(object sender, EventArgs e)
-        {
-            using (SqlConnection con = Conexion.ObtenerConexion())
-            {
-                con.Open();
-                MessageBox.Show("Conexion exitosa a SQL Server");
-            }
-        }
-
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtUsuario.Text) || string.IsNullOrWhiteSpace(txtContrasena.Text))
@@ -84,6 +75,13 @@ namespace SistemaVotos
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MainMenu menu = new MainMenu();
+            menu.Show();
+            this.Hide();
         }
     }
 }

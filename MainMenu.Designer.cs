@@ -161,13 +161,13 @@
             // integrantesToolStripMenuItem
             // 
             this.integrantesToolStripMenuItem.Name = "integrantesToolStripMenuItem";
-            this.integrantesToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.integrantesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.integrantesToolStripMenuItem.Text = "Integrantes";
             // 
             // cerrarSesionToolStripMenuItem
             // 
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
             this.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem_Click);
             // 
@@ -178,9 +178,11 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainMenu";
             this.Text = "Sistema de Elecciones";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
