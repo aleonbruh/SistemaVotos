@@ -34,7 +34,7 @@ namespace SistemaVotos
         }
         private void electoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmElectores frm = new FrmElectores();
+            Electores frm = new Electores();
             frm.MdiParent = this;
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.Show();

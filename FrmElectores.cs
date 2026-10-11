@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace SistemaVotos
 {
-    public partial class FrmElectores : Form
+    public partial class Electores : Form
     {
-        public FrmElectores()
+        public Electores()
         {
             InitializeComponent();
             CargarElectores();

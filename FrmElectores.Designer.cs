@@ -1,6 +1,6 @@
 ﻿namespace SistemaVotos
 {
-    partial class FrmElectores
+    partial class Electores
     {
         /// <summary>
         /// Required designer variable.
@@ -107,7 +107,7 @@
             this.dgvElectores.Size = new System.Drawing.Size(705, 186);
             this.dgvElectores.TabIndex = 7;
             // 
-            // FrmElectores
+            // Electores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -119,7 +119,7 @@
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.dgvElectores);
-            this.Name = "FrmElectores";
+            this.Name = "Electores";
             this.Text = "FrmElectores";
             ((System.ComponentModel.ISupportInitialize)(this.dgvElectores)).EndInit();
             this.ResumeLayout(false);

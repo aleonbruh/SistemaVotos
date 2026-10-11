@@ -98,19 +98,20 @@
             // dgvCandidatos
             // 
             this.dgvCandidatos.AllowUserToAddRows = false;
+            this.dgvCandidatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCandidatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCandidatos.Location = new System.Drawing.Point(31, 54);
+            this.dgvCandidatos.Location = new System.Drawing.Point(29, 51);
             this.dgvCandidatos.Name = "dgvCandidatos";
             this.dgvCandidatos.ReadOnly = true;
             this.dgvCandidatos.RowHeadersVisible = false;
-            this.dgvCandidatos.Size = new System.Drawing.Size(428, 150);
-            this.dgvCandidatos.TabIndex = 8;
+            this.dgvCandidatos.Size = new System.Drawing.Size(361, 152);
+            this.dgvCandidatos.TabIndex = 9;
             // 
             // FrmCandidatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 259);
+            this.ClientSize = new System.Drawing.Size(420, 259);
             this.Controls.Add(this.dgvCandidatos);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBusqueda);

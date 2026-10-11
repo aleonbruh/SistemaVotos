@@ -28,23 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvCentros = new System.Windows.Forms.DataGridView();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.dgvCentros = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCentros)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvCentros
-            // 
-            this.dgvCentros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCentros.Location = new System.Drawing.Point(25, 49);
-            this.dgvCentros.Name = "dgvCentros";
-            this.dgvCentros.Size = new System.Drawing.Size(331, 150);
-            this.dgvCentros.TabIndex = 0;
             // 
             // btnNuevo
             // 
@@ -102,18 +94,30 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             // 
+            // dgvCentros
+            // 
+            this.dgvCentros.AllowUserToAddRows = false;
+            this.dgvCentros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCentros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCentros.Location = new System.Drawing.Point(13, 50);
+            this.dgvCentros.Name = "dgvCentros";
+            this.dgvCentros.ReadOnly = true;
+            this.dgvCentros.RowHeadersVisible = false;
+            this.dgvCentros.Size = new System.Drawing.Size(343, 149);
+            this.dgvCentros.TabIndex = 10;
+            // 
             // FrmCentros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(387, 253);
+            this.Controls.Add(this.dgvCentros);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnNuevo);
-            this.Controls.Add(this.dgvCentros);
             this.Name = "FrmCentros";
             this.Text = "Centros de Votacion";
             this.Load += new System.EventHandler(this.FrmCentros_Load);
@@ -124,13 +128,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvCentros;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.TextBox txtBusqueda;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.DataGridView dgvCentros;
     }
 }

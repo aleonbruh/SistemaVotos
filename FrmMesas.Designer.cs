@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.txtBusqueda = new System.Windows.Forms.TextBox();
-            this.dgvMesas = new System.Windows.Forms.DataGridView();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.dgvMesas = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMesas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,14 +43,6 @@
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(285, 20);
             this.txtBusqueda.TabIndex = 0;
-            // 
-            // dgvMesas
-            // 
-            this.dgvMesas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMesas.Location = new System.Drawing.Point(27, 54);
-            this.dgvMesas.Name = "dgvMesas";
-            this.dgvMesas.Size = new System.Drawing.Size(366, 150);
-            this.dgvMesas.TabIndex = 1;
             // 
             // btnNuevo
             // 
@@ -92,16 +84,28 @@
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
+            // dgvMesas
+            // 
+            this.dgvMesas.AllowUserToAddRows = false;
+            this.dgvMesas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMesas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMesas.Location = new System.Drawing.Point(27, 54);
+            this.dgvMesas.Name = "dgvMesas";
+            this.dgvMesas.ReadOnly = true;
+            this.dgvMesas.RowHeadersVisible = false;
+            this.dgvMesas.Size = new System.Drawing.Size(366, 150);
+            this.dgvMesas.TabIndex = 10;
+            // 
             // FrmMesas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 261);
+            this.ClientSize = new System.Drawing.Size(428, 252);
+            this.Controls.Add(this.dgvMesas);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnNuevo);
-            this.Controls.Add(this.dgvMesas);
             this.Controls.Add(this.txtBusqueda);
             this.Name = "FrmMesas";
             this.Text = "Mesas de Votacion";
@@ -115,10 +119,10 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtBusqueda;
-        private System.Windows.Forms.DataGridView dgvMesas;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.DataGridView dgvMesas;
     }
 }

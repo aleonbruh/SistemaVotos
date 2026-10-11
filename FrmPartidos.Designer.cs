@@ -98,24 +98,25 @@
             // dgvPartidos
             // 
             this.dgvPartidos.AllowUserToAddRows = false;
+            this.dgvPartidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPartidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPartidos.Location = new System.Drawing.Point(41, 59);
             this.dgvPartidos.Name = "dgvPartidos";
             this.dgvPartidos.ReadOnly = true;
             this.dgvPartidos.RowHeadersVisible = false;
-            this.dgvPartidos.Size = new System.Drawing.Size(318, 150);
-            this.dgvPartidos.TabIndex = 2;
+            this.dgvPartidos.Size = new System.Drawing.Size(317, 150);
+            this.dgvPartidos.TabIndex = 8;
             // 
             // FrmPartidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(408, 275);
+            this.Controls.Add(this.dgvPartidos);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnNuevo);
-            this.Controls.Add(this.dgvPartidos);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBuscar);
             this.Name = "FrmPartidos";

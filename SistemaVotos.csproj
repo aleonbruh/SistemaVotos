@@ -164,6 +164,9 @@
     <EmbeddedResource Include="FrmPartidos.resx">
       <DependentUpon>FrmPartidos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmVoto.resx">
+      <DependentUpon>FrmVoto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
