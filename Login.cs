@@ -77,11 +77,5 @@ namespace SistemaVotos
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MainMenu menu = new MainMenu();
-            menu.Show();
-            this.Hide();
-        }
     }
 }

@@ -196,6 +196,7 @@
             this.rbValidoAlcaldes.TabStop = true;
             this.rbValidoAlcaldes.Text = "Voto Valido";
             this.rbValidoAlcaldes.UseVisualStyleBackColor = true;
+            this.rbValidoAlcaldes.CheckedChanged += new System.EventHandler(this.rbValidoAlcaldes_CheckedChanged);
             // 
             // label4
             // 
@@ -257,6 +258,7 @@
             this.rbValidoDiputados.TabStop = true;
             this.rbValidoDiputados.Text = "Voto Valido";
             this.rbValidoDiputados.UseVisualStyleBackColor = true;
+            this.rbValidoDiputados.CheckedChanged += new System.EventHandler(this.rbValidoDiputados_CheckedChanged);
             // 
             // label5
             // 

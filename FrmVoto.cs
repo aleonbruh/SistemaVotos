@@ -97,52 +97,59 @@ namespace SistemaVotos
             grpDiputados.Enabled = true;
             lblEstadoAlcaldes.Text = "";
             lblEstadoDiputados.Text = "";
+            cmbCandidatosAlcaldes.SelectedIndex = -1;
+            cmbCandidatosDiputados.SelectedIndex = -1;
 
             if (!idElectorSeleccionado.HasValue) return;
 
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
-                string query = "SELECT TipoEleccion FROM Votos WHERE idElector = @id";
+                string query = "SELECT VotoAlcalde, VotoDiputados FROM Electores WHERE IdElector = @idElector";
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    cmd.Parameters.AddWithValue("@id", idElectorSeleccionado.Value);
+                    cmd.Parameters.AddWithValue("@idElector", idElectorSeleccionado.Value);
                     con.Open();
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        alcaldeVotado = false;
-                        diputadoVotado = false;
-                        while (reader.Read())
+                        if (reader.Read())
                         {
-                            if (reader["TipoEleccion"].ToString() == "Alcalde") alcaldeVotado = true;
-                            else if (reader["TipoEleccion"].ToString() == "Diputados") diputadoVotado = true;
-                        }
+                            alcaldeVotado = Convert.ToBoolean(reader["VotoAlcalde"]);
+                            diputadoVotado = Convert.ToBoolean(reader["VotoDiputados"]);
 
-                        if (alcaldeVotado)
-                        {
-                            grpAlcaldes.Enabled = false;
-                            lblEstadoAlcaldes.Text = "Ya ha votado por Alcalde";
-                        }
-                        if (diputadoVotado)
-                        {
-                            grpDiputados.Enabled = false;
-                            lblEstadoDiputados.Text = "Ya ha votado por Diputados";
+                            if (alcaldeVotado)
+                            {
+                                grpAlcaldes.Enabled = false;
+                                lblEstadoAlcaldes.Text = "Ya ha votado para Alcalde";
+                            }
+
+                            if (diputadoVotado)
+                            {
+                                grpDiputados.Enabled = false;
+                                lblEstadoDiputados.Text = "Ya ha votado para Diputados";
+                            }
                         }
                     }
                 }
             }
         }
 
-        private void InsertarVoto(SqlConnection con, SqlTransaction tran, string tipo, int idCandidato, bool valido)
+        private void InsertarVoto(SqlConnection con, SqlTransaction tran, string tipo, int? idCandidato, bool valido)
         {
-            string query = "INSERT INTO Votos (idElector, idCandidato, TipoEleccion, FechaVoto, EstadoVoto, IdUsuario) VALUES (@elector, @candidato, @tipo, @fecha, @estado, @usuario)";
+            string query = "INSERT INTO Votos (idCandidato, TipoEleccion, FechaVoto, EstadoVoto, IdUsuario) VALUES (@candidato, @tipo, @fecha, @estado, @usuario)";
             using (SqlCommand cmd = new SqlCommand(query, con, tran))
             {
-                cmd.Parameters.AddWithValue("@elector", idElectorSeleccionado.Value);
-                cmd.Parameters.AddWithValue("@candidato", idCandidato);
+                cmd.Parameters.AddWithValue("@candidato", idCandidato.HasValue ? (object)idCandidato.Value : DBNull.Value);
                 cmd.Parameters.AddWithValue("@tipo", tipo);
                 cmd.Parameters.AddWithValue("@fecha", DateTime.Now);
-                cmd.Parameters.AddWithValue("@estado", valido ? "Valido" : "Nulo");
+                cmd.Parameters.AddWithValue("@estado", valido ? 1 : 0);
                 cmd.Parameters.AddWithValue("@usuario", SesionActual.IdUsuario);
+                cmd.ExecuteNonQuery();
+            }
+
+            string update = tipo == "Alcalde" ? "UPDATE Electores SET VotoAlcalde = 1 WHERE IdElector = @idElector" : "UPDATE Electores SET VotoDiputados = 1 WHERE IdElector = @idElector";
+            using (SqlCommand cmd = new SqlCommand(update, con, tran))
+            {
+                cmd.Parameters.AddWithValue("@idElector", idElectorSeleccionado.Value);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -153,12 +160,17 @@ namespace SistemaVotos
                 MessageBox.Show("Por favor, busque un elector antes de votar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            bool hayAlcalde = !alcaldeVotado && cmbCandidatosAlcaldes.SelectedValue != null;
-            bool hayDiputado = !diputadoVotado && cmbCandidatosDiputados.SelectedValue != null;
+            bool hayAlcalde = !alcaldeVotado && (rbNuloAlcaldes.Checked || cmbCandidatosAlcaldes.SelectedValue != null);
+            bool hayDiputado = !diputadoVotado && (rbNuloDiputados.Checked || cmbCandidatosDiputados.SelectedValue != null);
 
-            if (!hayAlcalde && !hayDiputado)
+            if (hayDiputado && rbValidoDiputados.Checked && cmbCandidatosDiputados.SelectedValue == null)
             {
-                MessageBox.Show("No hay votos para registrar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, seleccione un candidato para Diputados o marque como nulo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (hayAlcalde && rbValidoAlcaldes.Checked && cmbCandidatosAlcaldes.SelectedValue == null)
+            {
+                MessageBox.Show("Por favor, seleccione un candidato para Alcalde o marque como nulo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -170,11 +182,11 @@ namespace SistemaVotos
                 {
                     if (hayAlcalde)
                     {
-                        InsertarVoto(con, tran, "Alcalde", Convert.ToInt32(cmbCandidatosAlcaldes.SelectedValue), rbValidoAlcaldes.Checked);
+                        InsertarVoto(con, tran, "Alcalde", rbValidoAlcaldes.Checked ? Convert.ToInt32(cmbCandidatosAlcaldes.SelectedValue) : (int?)null, rbValidoAlcaldes.Checked);
                     }
                     if (hayDiputado)
                     {
-                        InsertarVoto(con, tran, "Diputados", Convert.ToInt32(cmbCandidatosDiputados.SelectedValue), rbValidoDiputados.Checked);
+                        InsertarVoto(con, tran, "Diputados", rbValidoDiputados.Checked ? Convert.ToInt32(cmbCandidatosDiputados.SelectedValue) : (int?)null, rbValidoDiputados.Checked);
                     }
                     tran.Commit();
                 }
@@ -213,6 +225,20 @@ namespace SistemaVotos
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void rbValidoAlcaldes_CheckedChanged(object sender, EventArgs e)
+        {
+            cmbCandidatosAlcaldes.Enabled = rbValidoAlcaldes.Checked;
+            if (!rbValidoAlcaldes.Checked)
+                cmbCandidatosAlcaldes.SelectedIndex = -1;
+        }
+
+        private void rbValidoDiputados_CheckedChanged(object sender, EventArgs e)
+        {
+            cmbCandidatosDiputados.Enabled = rbValidoDiputados.Checked;
+            if (!rbValidoDiputados.Checked)
+                cmbCandidatosDiputados.SelectedIndex = -1;
         }
     }
 }

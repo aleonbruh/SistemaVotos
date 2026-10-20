@@ -107,6 +107,12 @@
     <Compile Include="FrmPartidos.Designer.cs">
       <DependentUpon>FrmPartidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmReporteAlcalde.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReporteAlcalde.Designer.cs">
+      <DependentUpon>FrmReporteAlcalde.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmReportes.cs">
       <SubType>Form</SubType>
     </Compile>
