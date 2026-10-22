@@ -16,6 +16,7 @@ namespace SistemaVotos
         {
             InitializeComponent();
         }
+
         private void MainMenu_Load(object sender, EventArgs e)
         {
             if (SesionActual.Rol == "Operador")
@@ -23,7 +24,16 @@ namespace SistemaVotos
                 partidosToolStripMenuItem.Visible = false;
                 candidatosToolStripMenuItem.Visible = false;
                 reportesToolStripMenuItem.Visible = false;
+                notificacionesToolStripMenuItem.Visible = false;
             }
+        }
+
+        //Metodo para mostrar los formularios hijos dentro del formulario principal
+        private void ShowChildForm(Form form)
+        {
+            form.MdiParent = this;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.Show();
         }
 
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -32,52 +42,55 @@ namespace SistemaVotos
             login.Show();
             this.Close();
         }
+
         private void electoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Electores frm = new Electores();
-            frm.MdiParent = this;
-            frm.StartPosition = FormStartPosition.CenterParent;
-            frm.Show();
+            ShowChildForm(new Electores());
         }
 
         private void partidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmPartidos frm = new FrmPartidos();
-            frm.MdiParent = this;
-            frm.StartPosition = FormStartPosition.CenterParent;
-            frm.Show();
+            ShowChildForm(new FrmPartidos());
         }
 
         private void candidatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmCandidatos frm = new FrmCandidatos();
-            frm.MdiParent = this;
-            frm.StartPosition = FormStartPosition.CenterParent;
-            frm.Show();
+            ShowChildForm(new FrmCandidatos());
         }
 
         private void centrosDeVotacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmCentros frm = new FrmCentros();
-            frm.MdiParent = this;
-            frm.StartPosition = FormStartPosition.CenterParent;
-            frm.Show();
+            ShowChildForm(new FrmCentros());
         }
 
         private void mesasDeVotacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmMesas frm = new FrmMesas();
-            frm.MdiParent = this;
-            frm.StartPosition = FormStartPosition.CenterParent;
-            frm.Show();
+            ShowChildForm(new FrmMesas());
         }
 
         private void registrarVotoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmVoto frm = new FrmVoto();
-            frm.MdiParent = this;
-            frm.StartPosition = FormStartPosition.CenterParent;
-            frm.Show();
+            ShowChildForm(new FrmVoto());
+        }
+
+        private void resultadosDeAlcaldeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowChildForm(new FrmReporteAlcalde());
+        }
+
+        private void resultadosDeDiputadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowChildForm(new FrmReporteDiputados());
+        }
+
+        private void votosValidosYNulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowChildForm(new FrmReporteVotos());
+        }
+
+        private void notificacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowChildForm(new FrmNotificaciones());
         }
     }
 }

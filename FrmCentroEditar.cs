@@ -78,6 +78,7 @@ namespace SistemaVotos
             }
             this.Close();
             MessageBox.Show("Centro de votación guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Notificaciones.Guardar("Centro de Votación", $"El usuario {SesionActual.Usuario} ha {(idCentro.HasValue ? "editado" : "creado")} el centro de votación {txtNombre.Text}.");
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

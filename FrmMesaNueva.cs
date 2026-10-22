@@ -55,8 +55,7 @@ namespace SistemaVotos
                 cmd.ExecuteNonQuery();
             }
             MessageBox.Show("Mesa creada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            Notificaciones.Guardar("Mesa de Votación", $"El usuario {SesionActual.Usuario} ha creado la mesa número '{SiguenteMesa() - 1}' en el centro de votación '{cmbCentros.Text}'.");
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

@@ -107,6 +107,7 @@ namespace SistemaVotos
             }
 
             MessageBox.Show("Candidato guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Notificaciones.Guardar("Candidato", $"El usuario {SesionActual.Usuario} ha {(idCandidato.HasValue ? "editado" : "creado")} el candidato {txtNombre.Text}.");
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

@@ -71,6 +71,7 @@ namespace SistemaVotos
                 }
             }
             MessageBox.Show($"Partido {txtSiglas.Text.Trim()} guardado correctamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Notificaciones.Guardar("Partido", $"El usuario {SesionActual.Usuario} ha {(idPartido.HasValue ? "editado" : "creado")} el partido {txtSiglas.Text.Trim()}.");
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

@@ -16,10 +16,12 @@ namespace SistemaVotos
         private int? idElectorSeleccionado;
         private bool alcaldeVotado;
         private bool diputadoVotado;
+        private int idMesaElector;
         public FrmVoto()
         {
             InitializeComponent();
-            CargarCandidatos();
+            grpAlcaldes.Enabled = false;
+            grpDiputados.Enabled = false;
         }
 
         private void CargarCandidatos()
@@ -64,6 +66,8 @@ namespace SistemaVotos
                 return;
             }
 
+            CargarCandidatos();
+
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
                 string query = @"SELECT e.IdElector, e.NombreCompleto, c.Nombre AS Centro, m.NumeroMesa FROM Electores e INNER JOIN CentrosVotacion c ON e.IdCentro = c.IdCentro INNER JOIN MesasVotacion m ON e.IdMesa = m.IdMesa WHERE e.DUI = @DUI AND e.Estado = 1";
@@ -78,6 +82,7 @@ namespace SistemaVotos
                             idElectorSeleccionado = Convert.ToInt32(reader["IdElector"]);
                             txtNombre.Text = reader["NombreCompleto"].ToString();
                             txtCentro.Text = reader["Centro"].ToString();
+                            idMesaElector = Convert.ToInt32(reader["NumeroMesa"]);
                             txtMesa.Text = "Mesa " + reader["NumeroMesa"].ToString();
                             VerificarVotos();
                         }
@@ -135,7 +140,7 @@ namespace SistemaVotos
 
         private void InsertarVoto(SqlConnection con, SqlTransaction tran, string tipo, int? idCandidato, bool valido)
         {
-            string query = "INSERT INTO Votos (idCandidato, TipoEleccion, FechaVoto, EstadoVoto, IdUsuario) VALUES (@candidato, @tipo, @fecha, @estado, @usuario)";
+            string query = "INSERT INTO Votos (idCandidato, TipoEleccion, FechaVoto, EstadoVoto, IdUsuario, IdMesa) VALUES (@candidato, @tipo, @fecha, @estado, @usuario, @mesa)";
             using (SqlCommand cmd = new SqlCommand(query, con, tran))
             {
                 cmd.Parameters.AddWithValue("@candidato", idCandidato.HasValue ? (object)idCandidato.Value : DBNull.Value);
@@ -143,6 +148,7 @@ namespace SistemaVotos
                 cmd.Parameters.AddWithValue("@fecha", DateTime.Now);
                 cmd.Parameters.AddWithValue("@estado", valido ? 1 : 0);
                 cmd.Parameters.AddWithValue("@usuario", SesionActual.IdUsuario);
+                cmd.Parameters.AddWithValue("@mesa", idMesaElector);
                 cmd.ExecuteNonQuery();
             }
 
@@ -198,6 +204,7 @@ namespace SistemaVotos
                 }
             }
             MessageBox.Show("Voto registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Notificaciones.Guardar("Voto", $"El usuario {SesionActual.Usuario} ha registrado un voto para el elector {txtNombre.Text}.");
             LimpiarTodo();
         }
         private void LimpiarElector()

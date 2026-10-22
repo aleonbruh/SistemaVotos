@@ -129,6 +129,7 @@ namespace SistemaVotos
                 }
             }
             MessageBox.Show("Elector guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Notificaciones.Guardar("Elector", $"El usuario {SesionActual.Usuario} ha {(idElector.HasValue ? "editado" : "creado")} el elector {txtNombre.Text}.");
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

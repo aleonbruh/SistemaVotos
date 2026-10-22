@@ -40,10 +40,10 @@
             this.resultadosDeAlcaldeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resultadosDeDiputadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.votosValidosYNulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reporteGeneralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.integrantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +52,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestionToolStripMenuItem,
             this.reportesToolStripMenuItem,
+            this.notificacionesToolStripMenuItem,
             this.sistemaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -119,8 +120,7 @@
             this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resultadosDeAlcaldeToolStripMenuItem,
             this.resultadosDeDiputadosToolStripMenuItem,
-            this.votosValidosYNulosToolStripMenuItem,
-            this.reporteGeneralToolStripMenuItem});
+            this.votosValidosYNulosToolStripMenuItem});
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             this.reportesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.reportesToolStripMenuItem.Text = "Reportes";
@@ -130,24 +130,21 @@
             this.resultadosDeAlcaldeToolStripMenuItem.Name = "resultadosDeAlcaldeToolStripMenuItem";
             this.resultadosDeAlcaldeToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.resultadosDeAlcaldeToolStripMenuItem.Text = "Resultados de Alcalde";
+            this.resultadosDeAlcaldeToolStripMenuItem.Click += new System.EventHandler(this.resultadosDeAlcaldeToolStripMenuItem_Click);
             // 
             // resultadosDeDiputadosToolStripMenuItem
             // 
             this.resultadosDeDiputadosToolStripMenuItem.Name = "resultadosDeDiputadosToolStripMenuItem";
             this.resultadosDeDiputadosToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.resultadosDeDiputadosToolStripMenuItem.Text = "Resultados de Diputados";
+            this.resultadosDeDiputadosToolStripMenuItem.Click += new System.EventHandler(this.resultadosDeDiputadosToolStripMenuItem_Click);
             // 
             // votosValidosYNulosToolStripMenuItem
             // 
             this.votosValidosYNulosToolStripMenuItem.Name = "votosValidosYNulosToolStripMenuItem";
             this.votosValidosYNulosToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.votosValidosYNulosToolStripMenuItem.Text = "Votos Validos y Nulos";
-            // 
-            // reporteGeneralToolStripMenuItem
-            // 
-            this.reporteGeneralToolStripMenuItem.Name = "reporteGeneralToolStripMenuItem";
-            this.reporteGeneralToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.reporteGeneralToolStripMenuItem.Text = "Reporte General";
+            this.votosValidosYNulosToolStripMenuItem.Click += new System.EventHandler(this.votosValidosYNulosToolStripMenuItem_Click);
             // 
             // sistemaToolStripMenuItem
             // 
@@ -170,6 +167,13 @@
             this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
             this.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem_Click);
+            // 
+            // notificacionesToolStripMenuItem
+            // 
+            this.notificacionesToolStripMenuItem.Name = "notificacionesToolStripMenuItem";
+            this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.notificacionesToolStripMenuItem.Text = "Notificaciones";
+            this.notificacionesToolStripMenuItem.Click += new System.EventHandler(this.notificacionesToolStripMenuItem_Click);
             // 
             // MainMenu
             // 
@@ -205,9 +209,9 @@
         private System.Windows.Forms.ToolStripMenuItem resultadosDeAlcaldeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resultadosDeDiputadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem votosValidosYNulosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reporteGeneralToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sistemaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem integrantesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem notificacionesToolStripMenuItem;
     }
 }
