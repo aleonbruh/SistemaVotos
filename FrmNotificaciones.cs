@@ -33,7 +33,7 @@ namespace SistemaVotos
                 {
                     while (reader.Read())
                     {
-                        agregarLinea(rtxAlertas, "[Atencion] ", "El elector " + reader["NombreCompleto"] + " no ha registrado su voto.?\n");
+                        agregarLinea(rtxAlertas, "[Atencion] ", "El elector " + reader["NombreCompleto"] + " no ha registrado su voto.\n");
                     }
                 }
 
@@ -46,7 +46,7 @@ namespace SistemaVotos
                 }
                 if (nulos == 0)
                 {
-                    agregarLinea(rtxAlertas, "[Atencion] ", "No se han registrado votos nulos.?\n");
+                    agregarLinea(rtxAlertas, "[Atencion] ", "No se han registrado votos nulos.\n");
                 }
             }
         }

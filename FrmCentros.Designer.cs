@@ -105,6 +105,7 @@
             this.dgvCentros.RowHeadersVisible = false;
             this.dgvCentros.Size = new System.Drawing.Size(343, 149);
             this.dgvCentros.TabIndex = 10;
+            this.dgvCentros.SelectionChanged += new System.EventHandler(this.dgvCentros_SelectionChanged);
             // 
             // FrmCentros
             // 

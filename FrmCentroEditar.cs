@@ -61,6 +61,22 @@ namespace SistemaVotos
 
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
+                con.Open();
+
+                //Validacion
+                string queryValidacion = "SELECT COUNT(*) FROM CentrosVotacion WHERE LOWER(Nombre) = LOWER(@nombre) AND IdCentro <> ISNULL(@id, -1)";
+                using (SqlCommand cmdValidacion = new SqlCommand(queryValidacion, con))
+                {
+                    cmdValidacion.Parameters.AddWithValue("@nombre", txtNombre.Text);
+                    cmdValidacion.Parameters.AddWithValue("@id", idCentro.HasValue ? (object)idCentro.Value : DBNull.Value);
+                    int count = Convert.ToInt32(cmdValidacion.ExecuteScalar());
+                    if (count > 0)
+                    {
+                        MessageBox.Show("Ya existe un centro de votación con ese nombre.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
                 string query;
                 if (idCentro.HasValue)
                     query = "UPDATE CentrosVotacion SET Nombre = @nombre, Direccion = @direccion WHERE IdCentro = @id";
@@ -72,7 +88,6 @@ namespace SistemaVotos
                     cmd.Parameters.AddWithValue("@direccion", txtDireccion.Text);
                     if (idCentro.HasValue)
                         cmd.Parameters.AddWithValue("@id", idCentro.Value);
-                    con.Open();
                     cmd.ExecuteNonQuery();
                 }
             }

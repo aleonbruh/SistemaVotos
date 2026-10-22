@@ -106,6 +106,7 @@
             this.dgvElectores.RowHeadersVisible = false;
             this.dgvElectores.Size = new System.Drawing.Size(705, 186);
             this.dgvElectores.TabIndex = 7;
+            this.dgvElectores.SelectionChanged += new System.EventHandler(this.dgvElectores_SelectionChanged);
             // 
             // Electores
             // 

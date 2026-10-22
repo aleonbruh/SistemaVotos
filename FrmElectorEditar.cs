@@ -103,6 +103,23 @@ namespace SistemaVotos
 
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
+                con.Open();
+
+                //Validacion
+                string queryValidacion = "SELECT COUNT(*) FROM Electores WHERE LOWER(NombreCompleto) = LOWER(@nombre) AND LOWER(DUI) = LOWER(@dui) AND IdElector <> ISNULL(@id, -1)";
+                using (SqlCommand cmdValidacion = new SqlCommand(queryValidacion, con))
+                {
+                    cmdValidacion.Parameters.AddWithValue("@nombre", txtNombre.Text);
+                    cmdValidacion.Parameters.AddWithValue("@dui", txtDUI.Text);
+                    cmdValidacion.Parameters.AddWithValue("@id", idElector.HasValue ? (object)idElector.Value : DBNull.Value);
+                    int count = Convert.ToInt32(cmdValidacion.ExecuteScalar());
+                    if (count > 0)
+                    {
+                        MessageBox.Show("Ya existe un elector con el mismo nombre y DUI.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
                 string query;
                 if (idElector.HasValue)
                 {
@@ -124,7 +141,6 @@ namespace SistemaVotos
                     {
                         cmd.Parameters.AddWithValue("@id", idElector.Value);
                     }
-                    con.Open();
                     cmd.ExecuteNonQuery();
                 }
             }

@@ -53,6 +53,23 @@ namespace SistemaVotos
 
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
+                con.Open();
+
+                //Validacion
+                string queryValidacion = "SELECT COUNT(*) FROM Partidos WHERE LOWER(Nombre) = LOWER(@nombre) AND LOWER(Siglas) = LOWER(@siglas) AND IdPartido <> ISNULL(@id, -1)";
+                using (SqlCommand cmdValidacion = new SqlCommand(queryValidacion, con))
+                {
+                    cmdValidacion.Parameters.AddWithValue("@nombre", txtNombre.Text);
+                    cmdValidacion.Parameters.AddWithValue("@siglas", txtSiglas.Text);
+                    cmdValidacion.Parameters.AddWithValue("@id", idPartido.HasValue ? (object)idPartido.Value : DBNull.Value);
+                    int count = Convert.ToInt32(cmdValidacion.ExecuteScalar());
+                    if (count > 0)
+                    {
+                        MessageBox.Show("Ya existe un partido con el mismo nombre y siglas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
                 string query;
                 if (idPartido.HasValue)
                     query = "UPDATE Partidos SET Nombre = @nombre, Siglas = @siglas WHERE IdPartido = @id";
@@ -66,7 +83,6 @@ namespace SistemaVotos
                     if (idPartido.HasValue)
                         cmd.Parameters.AddWithValue("@id", idPartido.Value);
 
-                    con.Open();
                     cmd.ExecuteNonQuery();
                 }
             }

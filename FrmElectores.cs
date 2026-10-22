@@ -56,26 +56,40 @@ namespace SistemaVotos
             }
         }
 
+        private void dgvElectores_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvElectores.CurrentRow != null)
+            {
+                string estado = dgvElectores.CurrentRow.Cells["Estado"].Value.ToString();
+                btnEliminar.Text = (estado == "Activo") ? "Eliminar" : "Restaurar";
+            }
+        }
+
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvElectores.CurrentRow == null)
-            {
-                MessageBox.Show("Seleccione un elector para eliminar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+            if (dgvElectores.CurrentRow == null) return;
+
             int id = Convert.ToInt32(dgvElectores.CurrentRow.Cells["IdElector"].Value);
             string nombre = dgvElectores.CurrentRow.Cells["Nombre Completo"].Value.ToString();
-            if (MessageBox.Show($"¿Está seguro de eliminar el elector '{nombre}'?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            string estado = dgvElectores.CurrentRow.Cells["Estado"].Value.ToString();
+
+            int nuevoEstado = (estado == "Activo") ? 0 : 1;
+            string accion = (estado == "Activo") ? "eliminar" : "restaurar";
+            string accionNotificacion = (estado == "Activo") ? "eliminado" : "restaurado";
+
+            if (MessageBox.Show($"¿Está seguro de {accion} el elector '{nombre}'?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 using (SqlConnection con = Conexion.ObtenerConexion())
                 {
-                    string query = "UPDATE Electores SET Estado = 0 WHERE IdElector = @id";
+                    string query = "UPDATE Electores SET Estado = @nuevoEstado WHERE IdElector = @id";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
+                        cmd.Parameters.AddWithValue("@nuevoEstado", nuevoEstado);
                         cmd.Parameters.AddWithValue("@id", id);
                         cmd.ExecuteNonQuery();
                     }
                 }
+                Notificaciones.Guardar("Elector", $"El usuario {SesionActual.Usuario} ha {accionNotificacion} el elector {nombre}.");
                 CargarElectores();
             }
         }

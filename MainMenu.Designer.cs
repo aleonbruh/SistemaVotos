@@ -40,10 +40,10 @@
             this.resultadosDeAlcaldeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resultadosDeDiputadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.votosValidosYNulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.integrantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.notificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -146,6 +146,13 @@
             this.votosValidosYNulosToolStripMenuItem.Text = "Votos Validos y Nulos";
             this.votosValidosYNulosToolStripMenuItem.Click += new System.EventHandler(this.votosValidosYNulosToolStripMenuItem_Click);
             // 
+            // notificacionesToolStripMenuItem
+            // 
+            this.notificacionesToolStripMenuItem.Name = "notificacionesToolStripMenuItem";
+            this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.notificacionesToolStripMenuItem.Text = "Notificaciones";
+            this.notificacionesToolStripMenuItem.Click += new System.EventHandler(this.notificacionesToolStripMenuItem_Click);
+            // 
             // sistemaToolStripMenuItem
             // 
             this.sistemaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -160,6 +167,7 @@
             this.integrantesToolStripMenuItem.Name = "integrantesToolStripMenuItem";
             this.integrantesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.integrantesToolStripMenuItem.Text = "Integrantes";
+            this.integrantesToolStripMenuItem.Click += new System.EventHandler(this.integrantesToolStripMenuItem_Click);
             // 
             // cerrarSesionToolStripMenuItem
             // 
@@ -167,13 +175,6 @@
             this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
             this.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem_Click);
-            // 
-            // notificacionesToolStripMenuItem
-            // 
-            this.notificacionesToolStripMenuItem.Name = "notificacionesToolStripMenuItem";
-            this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-            this.notificacionesToolStripMenuItem.Text = "Notificaciones";
-            this.notificacionesToolStripMenuItem.Click += new System.EventHandler(this.notificacionesToolStripMenuItem_Click);
             // 
             // MainMenu
             // 

@@ -106,6 +106,7 @@
             this.dgvPartidos.RowHeadersVisible = false;
             this.dgvPartidos.Size = new System.Drawing.Size(317, 150);
             this.dgvPartidos.TabIndex = 8;
+            this.dgvPartidos.SelectionChanged += new System.EventHandler(this.dgvPartidos_SelectionChanged);
             // 
             // FrmPartidos
             // 

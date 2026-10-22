@@ -85,6 +85,23 @@ namespace SistemaVotos
 
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
+                con.Open();
+
+                //Validacion
+                string queryValidacion = "SELECT COUNT(*) FROM Candidatos WHERE LOWER(NombreCompleto) = LOWER(@nombre) AND LOWER(TipoEleccion) = LOWER(@tipo) AND IdCandidato <> ISNULL(@id, -1)";
+                using (SqlCommand cmdValidacion = new SqlCommand(queryValidacion, con))
+                {
+                    cmdValidacion.Parameters.AddWithValue("@nombre", txtNombre.Text.Trim());
+                    cmdValidacion.Parameters.AddWithValue("@tipo", cmbTipo.SelectedItem.ToString());
+                    cmdValidacion.Parameters.AddWithValue("@id", idCandidato.HasValue ? (object)idCandidato.Value : DBNull.Value);
+                    int existe = (int)cmdValidacion.ExecuteScalar();
+                    if (existe > 0)
+                    {
+                        MessageBox.Show("Ya existe un candidato con el mismo nombre y tipo de elección.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
                 string query;
                 if (idCandidato.HasValue)
                 {
@@ -101,7 +118,6 @@ namespace SistemaVotos
                     cmd.Parameters.AddWithValue("@tipo", cmbTipo.SelectedItem.ToString());
                     if (idCandidato.HasValue)
                         cmd.Parameters.AddWithValue("@id", idCandidato.Value);
-                    con.Open();
                     cmd.ExecuteNonQuery();
                 }
             }

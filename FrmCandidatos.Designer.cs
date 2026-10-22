@@ -106,6 +106,7 @@
             this.dgvCandidatos.RowHeadersVisible = false;
             this.dgvCandidatos.Size = new System.Drawing.Size(361, 152);
             this.dgvCandidatos.TabIndex = 9;
+            this.dgvCandidatos.SelectionChanged += new System.EventHandler(this.dgvCandidatos_SelectionChanged);
             // 
             // FrmCandidatos
             // 

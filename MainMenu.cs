@@ -92,5 +92,10 @@ namespace SistemaVotos
         {
             ShowChildForm(new FrmNotificaciones());
         }
+
+        private void integrantesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Proyecto realizado por:\nAngel Gabriel Leon Rivas\nCarnet: LR100124", "Integrantes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

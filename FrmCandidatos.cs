@@ -52,23 +52,41 @@ namespace SistemaVotos
             }
         }
 
+        private void dgvCandidatos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvCandidatos.CurrentRow != null)
+            {
+                string estado = dgvCandidatos.CurrentRow.Cells["Estado"].Value.ToString();
+                btnEliminar.Text = (estado == "Activo") ? "Eliminar" : "Restaurar";
+            }
+        }
+
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             if (dgvCandidatos.CurrentRow == null) return;
+
             int id = Convert.ToInt32(dgvCandidatos.CurrentRow.Cells["IdCandidato"].Value);
             string nombre = dgvCandidatos.CurrentRow.Cells["NombreCompleto"].Value.ToString();
-            if (MessageBox.Show($"¿Está seguro de eliminar el candidato '{nombre}'?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            string estado = dgvCandidatos.CurrentRow.Cells["Estado"].Value.ToString();
+
+            int nuevoEstado = (estado == "Activo") ? 0 : 1;
+            string accion = (estado == "Activo") ? "eliminar" : "restaurar";
+            string accionNotificacion = (estado == "Activo") ? "eliminado" : "restaurado";
+
+            if (MessageBox.Show($"¿Está seguro de que desea {accion} al candidato '{nombre}'?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 using (SqlConnection con = Conexion.ObtenerConexion())
                 {
-                    string query = "UPDATE Candidatos SET Estado = 0 WHERE IdCandidato = @id";
+                    string query = "UPDATE Candidatos SET Estado = @nuevoEstado WHERE IdCandidato = @id";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
+                        cmd.Parameters.AddWithValue("@nuevoEstado", nuevoEstado);
                         cmd.Parameters.AddWithValue("@id", id);
                         con.Open();
-                        cmd.ExecuteNonQuery();  
+                        cmd.ExecuteNonQuery();
                     }
                 }
+                Notificaciones.Guardar("Candidato", $"El usuario {SesionActual.Usuario} ha {accionNotificacion} el candidato {nombre}.");
                 CargarCandidatos();
             }
         }
