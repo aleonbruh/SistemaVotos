@@ -66,7 +66,7 @@ namespace SistemaVotos
                         string tipo = reader["Tipo"].ToString();
                         string mensaje = reader["Mensaje"].ToString();
                         DateTime fechaHora = Convert.ToDateTime(reader["FechaHora"]);
-                        agregarLinea(rtxNotificaciones, $"[{tipo}] ", $"{fechaHora.ToString("HH:mm")} - {mensaje}");
+                        agregarLinea(rtxNotificaciones, $"[{tipo}] ", $"{fechaHora.ToString("dd/MM/yyyy HH:mm")}\n{mensaje}");
                     }
                 }
             }

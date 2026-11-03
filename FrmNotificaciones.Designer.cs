@@ -38,7 +38,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 33);
+            this.label1.Location = new System.Drawing.Point(9, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 13);
             this.label1.TabIndex = 0;
@@ -46,26 +46,31 @@
             // 
             // rtxAlertas
             // 
-            this.rtxAlertas.Location = new System.Drawing.Point(26, 49);
+            this.rtxAlertas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtxAlertas.Location = new System.Drawing.Point(12, 38);
             this.rtxAlertas.Name = "rtxAlertas";
             this.rtxAlertas.ReadOnly = true;
-            this.rtxAlertas.Size = new System.Drawing.Size(513, 131);
+            this.rtxAlertas.Size = new System.Drawing.Size(291, 131);
             this.rtxAlertas.TabIndex = 1;
             this.rtxAlertas.Text = "";
             // 
             // rtxNotificaciones
             // 
-            this.rtxNotificaciones.Location = new System.Drawing.Point(26, 209);
+            this.rtxNotificaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtxNotificaciones.Location = new System.Drawing.Point(12, 198);
             this.rtxNotificaciones.Name = "rtxNotificaciones";
             this.rtxNotificaciones.ReadOnly = true;
-            this.rtxNotificaciones.Size = new System.Drawing.Size(513, 283);
+            this.rtxNotificaciones.Size = new System.Drawing.Size(291, 283);
             this.rtxNotificaciones.TabIndex = 3;
             this.rtxNotificaciones.Text = "";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 193);
+            this.label2.Location = new System.Drawing.Point(9, 182);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 2;
@@ -73,7 +78,8 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(464, 23);
+            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnActualizar.Location = new System.Drawing.Point(228, 12);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 4;
@@ -85,14 +91,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(577, 528);
+            this.ClientSize = new System.Drawing.Size(320, 497);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.rtxNotificaciones);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.rtxAlertas);
             this.Controls.Add(this.label1);
             this.Name = "FrmNotificaciones";
-            this.Text = "FrmNotificaciones";
+            this.Text = "Notificaciones";
             this.ResumeLayout(false);
             this.PerformLayout();
 

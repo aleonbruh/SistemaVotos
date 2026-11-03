@@ -36,12 +36,17 @@
             this.txtValidos = new System.Windows.Forms.TextBox();
             this.txtNulos = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnGenerarPDF = new System.Windows.Forms.Button();
+            this.btnGenerarExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVotos)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvVotos
             // 
             this.dgvVotos.AllowUserToAddRows = false;
+            this.dgvVotos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvVotos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvVotos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVotos.Location = new System.Drawing.Point(26, 56);
@@ -83,8 +88,9 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 284);
+            this.label1.Location = new System.Drawing.Point(23, 291);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 13;
@@ -92,7 +98,8 @@
             // 
             // txtValidos
             // 
-            this.txtValidos.Location = new System.Drawing.Point(104, 281);
+            this.txtValidos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtValidos.Location = new System.Drawing.Point(103, 288);
             this.txtValidos.Name = "txtValidos";
             this.txtValidos.ReadOnly = true;
             this.txtValidos.Size = new System.Drawing.Size(100, 20);
@@ -100,7 +107,8 @@
             // 
             // txtNulos
             // 
-            this.txtNulos.Location = new System.Drawing.Point(297, 281);
+            this.txtNulos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtNulos.Location = new System.Drawing.Point(296, 288);
             this.txtNulos.Name = "txtNulos";
             this.txtNulos.ReadOnly = true;
             this.txtNulos.Size = new System.Drawing.Size(100, 20);
@@ -108,18 +116,43 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(224, 284);
+            this.label2.Location = new System.Drawing.Point(223, 291);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 15;
             this.label2.Text = "Votos Nulos:";
             // 
+            // btnGenerarPDF
+            // 
+            this.btnGenerarPDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnGenerarPDF.Location = new System.Drawing.Point(26, 322);
+            this.btnGenerarPDF.Name = "btnGenerarPDF";
+            this.btnGenerarPDF.Size = new System.Drawing.Size(130, 23);
+            this.btnGenerarPDF.TabIndex = 17;
+            this.btnGenerarPDF.Text = "Reporte General PDF";
+            this.btnGenerarPDF.UseVisualStyleBackColor = true;
+            this.btnGenerarPDF.Click += new System.EventHandler(this.btnGenerarPDF_Click);
+            // 
+            // btnGenerarExcel
+            // 
+            this.btnGenerarExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnGenerarExcel.Location = new System.Drawing.Point(162, 322);
+            this.btnGenerarExcel.Name = "btnGenerarExcel";
+            this.btnGenerarExcel.Size = new System.Drawing.Size(128, 23);
+            this.btnGenerarExcel.TabIndex = 18;
+            this.btnGenerarExcel.Text = "Reporte General Excel";
+            this.btnGenerarExcel.UseVisualStyleBackColor = true;
+            this.btnGenerarExcel.Click += new System.EventHandler(this.btnGenerarExcel_Click);
+            // 
             // FrmReporteVotos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(605, 327);
+            this.ClientSize = new System.Drawing.Size(605, 366);
+            this.Controls.Add(this.btnGenerarExcel);
+            this.Controls.Add(this.btnGenerarPDF);
             this.Controls.Add(this.txtNulos);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtValidos);
@@ -129,7 +162,7 @@
             this.Controls.Add(this.btnValidos);
             this.Controls.Add(this.dgvVotos);
             this.Name = "FrmReporteVotos";
-            this.Text = "Votos Validos y Nulos";
+            this.Text = "Reporte General";
             ((System.ComponentModel.ISupportInitialize)(this.dgvVotos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -146,5 +179,7 @@
         private System.Windows.Forms.TextBox txtValidos;
         private System.Windows.Forms.TextBox txtNulos;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnGenerarPDF;
+        private System.Windows.Forms.Button btnGenerarExcel;
     }
 }

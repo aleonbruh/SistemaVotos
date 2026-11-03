@@ -59,6 +59,8 @@
             // 
             // grpElector
             // 
+            this.grpElector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpElector.Controls.Add(this.label6);
             this.grpElector.Controls.Add(this.txtMesa);
             this.grpElector.Controls.Add(this.txtCentro);
@@ -154,6 +156,7 @@
             // 
             // grpAlcaldes
             // 
+            this.grpAlcaldes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.grpAlcaldes.Controls.Add(this.lblEstadoAlcaldes);
             this.grpAlcaldes.Controls.Add(this.rbNuloAlcaldes);
             this.grpAlcaldes.Controls.Add(this.rbValidoAlcaldes);
@@ -217,6 +220,8 @@
             // 
             // grpDiputados
             // 
+            this.grpDiputados.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpDiputados.Controls.Add(this.lblEstadoDiputados);
             this.grpDiputados.Controls.Add(this.rbNuloDiputados);
             this.grpDiputados.Controls.Add(this.rbValidoDiputados);
@@ -279,7 +284,9 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(98, 391);
+            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAceptar.Location = new System.Drawing.Point(12, 391);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 10;
@@ -289,7 +296,9 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(179, 391);
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelar.Location = new System.Drawing.Point(93, 391);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 11;
@@ -308,7 +317,7 @@
             this.Controls.Add(this.grpAlcaldes);
             this.Controls.Add(this.grpElector);
             this.Name = "FrmVoto";
-            this.Text = "FrmVoto";
+            this.Text = "Registrar Voto";
             this.grpElector.ResumeLayout(false);
             this.grpElector.PerformLayout();
             this.grpAlcaldes.ResumeLayout(false);

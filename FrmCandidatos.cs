@@ -70,8 +70,8 @@ namespace SistemaVotos
             string estado = dgvCandidatos.CurrentRow.Cells["Estado"].Value.ToString();
 
             int nuevoEstado = (estado == "Activo") ? 0 : 1;
-            string accion = (estado == "Activo") ? "eliminar" : "restaurar";
-            string accionNotificacion = (estado == "Activo") ? "eliminado" : "restaurado";
+            string accion = (estado == "Activo") ? "desactivar" : "activar";
+            string accionNotificacion = (estado == "Activo") ? "desactivado" : "activado";
 
             if (MessageBox.Show($"¿Está seguro de que desea {accion} al candidato '{nombre}'?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {

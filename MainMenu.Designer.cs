@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.partidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,6 +44,7 @@
             this.notificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.integrantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -69,12 +71,14 @@
             this.mesasDeVotacionToolStripMenuItem,
             this.electoresToolStripMenuItem,
             this.registrarVotoToolStripMenuItem});
+            this.gestionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("gestionToolStripMenuItem.Image")));
             this.gestionToolStripMenuItem.Name = "gestionToolStripMenuItem";
-            this.gestionToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.gestionToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.gestionToolStripMenuItem.Text = "Gestion";
             // 
             // partidosToolStripMenuItem
             // 
+            this.partidosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("partidosToolStripMenuItem.Image")));
             this.partidosToolStripMenuItem.Name = "partidosToolStripMenuItem";
             this.partidosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.partidosToolStripMenuItem.Text = "Partidos";
@@ -82,6 +86,7 @@
             // 
             // candidatosToolStripMenuItem
             // 
+            this.candidatosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("candidatosToolStripMenuItem.Image")));
             this.candidatosToolStripMenuItem.Name = "candidatosToolStripMenuItem";
             this.candidatosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.candidatosToolStripMenuItem.Text = "Candidatos";
@@ -89,6 +94,7 @@
             // 
             // centrosDeVotacionToolStripMenuItem
             // 
+            this.centrosDeVotacionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("centrosDeVotacionToolStripMenuItem.Image")));
             this.centrosDeVotacionToolStripMenuItem.Name = "centrosDeVotacionToolStripMenuItem";
             this.centrosDeVotacionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.centrosDeVotacionToolStripMenuItem.Text = "Centros de Votacion";
@@ -96,6 +102,7 @@
             // 
             // mesasDeVotacionToolStripMenuItem
             // 
+            this.mesasDeVotacionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("mesasDeVotacionToolStripMenuItem.Image")));
             this.mesasDeVotacionToolStripMenuItem.Name = "mesasDeVotacionToolStripMenuItem";
             this.mesasDeVotacionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mesasDeVotacionToolStripMenuItem.Text = "Mesas de Votacion";
@@ -103,6 +110,7 @@
             // 
             // electoresToolStripMenuItem
             // 
+            this.electoresToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("electoresToolStripMenuItem.Image")));
             this.electoresToolStripMenuItem.Name = "electoresToolStripMenuItem";
             this.electoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.electoresToolStripMenuItem.Text = "Electores";
@@ -110,6 +118,7 @@
             // 
             // registrarVotoToolStripMenuItem
             // 
+            this.registrarVotoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("registrarVotoToolStripMenuItem.Image")));
             this.registrarVotoToolStripMenuItem.Name = "registrarVotoToolStripMenuItem";
             this.registrarVotoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.registrarVotoToolStripMenuItem.Text = "Registrar Voto";
@@ -121,8 +130,9 @@
             this.resultadosDeAlcaldeToolStripMenuItem,
             this.resultadosDeDiputadosToolStripMenuItem,
             this.votosValidosYNulosToolStripMenuItem});
+            this.reportesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reportesToolStripMenuItem.Image")));
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.reportesToolStripMenuItem.Text = "Reportes";
             // 
             // resultadosDeAlcaldeToolStripMenuItem
@@ -148,8 +158,9 @@
             // 
             // notificacionesToolStripMenuItem
             // 
+            this.notificacionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("notificacionesToolStripMenuItem.Image")));
             this.notificacionesToolStripMenuItem.Name = "notificacionesToolStripMenuItem";
-            this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
             this.notificacionesToolStripMenuItem.Text = "Notificaciones";
             this.notificacionesToolStripMenuItem.Click += new System.EventHandler(this.notificacionesToolStripMenuItem_Click);
             // 
@@ -157,20 +168,32 @@
             // 
             this.sistemaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.integrantesToolStripMenuItem,
+            this.usuariosToolStripMenuItem,
             this.cerrarSesionToolStripMenuItem});
+            this.sistemaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("sistemaToolStripMenuItem.Image")));
             this.sistemaToolStripMenuItem.Name = "sistemaToolStripMenuItem";
-            this.sistemaToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.sistemaToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.sistemaToolStripMenuItem.Text = "Sistema";
             // 
             // integrantesToolStripMenuItem
             // 
+            this.integrantesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("integrantesToolStripMenuItem.Image")));
             this.integrantesToolStripMenuItem.Name = "integrantesToolStripMenuItem";
             this.integrantesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.integrantesToolStripMenuItem.Text = "Integrantes";
             this.integrantesToolStripMenuItem.Click += new System.EventHandler(this.integrantesToolStripMenuItem_Click);
             // 
+            // usuariosToolStripMenuItem
+            // 
+            this.usuariosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("usuariosToolStripMenuItem.Image")));
+            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
+            // 
             // cerrarSesionToolStripMenuItem
             // 
+            this.cerrarSesionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cerrarSesionToolStripMenuItem.Image")));
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
             this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
@@ -180,7 +203,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
@@ -214,5 +239,6 @@
         private System.Windows.Forms.ToolStripMenuItem integrantesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem notificacionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
     }
 }

@@ -25,10 +25,10 @@ namespace SistemaVotos
                 candidatosToolStripMenuItem.Visible = false;
                 reportesToolStripMenuItem.Visible = false;
                 notificacionesToolStripMenuItem.Visible = false;
+                usuariosToolStripMenuItem.Visible = false;
             }
         }
 
-        //Metodo para mostrar los formularios hijos dentro del formulario principal
         private void ShowChildForm(Form form)
         {
             form.MdiParent = this;
@@ -96,6 +96,11 @@ namespace SistemaVotos
         private void integrantesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Proyecto realizado por:\nAngel Gabriel Leon Rivas\nCarnet: LR100124", "Integrantes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowChildForm(new FrmUsuarios());
         }
     }
 }
