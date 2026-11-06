@@ -27,7 +27,7 @@ namespace SistemaVotos
         {
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
-                string query = "SELECT IdCentro, Nombre, Direccion, CASE WHEN Estado = 1 THEN 'Activo' ELSE 'Inactivo' END AS Estado FROM CentrosVotacion";
+                string query = "SELECT c.IdCentro, c.Nombre, c.Direccion, CASE WHEN d.IdDistrito IS NOT NULL THEN d.Nombre ELSE 'No asignado' END AS Distrito, CASE WHEN c.Estado = 1 THEN 'Activo' ELSE 'Inactivo' END AS Estado FROM CentrosVotacion c LEFT JOIN Distritos d ON c.IdDistrito = d.IdDistrito";
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);

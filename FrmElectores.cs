@@ -23,7 +23,7 @@ namespace SistemaVotos
         {
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
-                string query = "SELECT e.IdElector, e.NombreCompleto AS 'Nombre Completo', e.DUI, e.FechaNacimiento, e.Direccion, c.Nombre AS Centro, m.NumeroMesa, CASE WHEN e.Estado = 1 THEN 'Activo' ELSE 'Inactivo' END AS Estado FROM Electores e INNER JOIN CentrosVotacion c ON e.IdCentro = c.IdCentro INNER JOIN MesasVotacion m ON e.IdMesa = m.IdMesa";
+                string query = "SELECT e.IdElector, e.NombreCompleto, e.DUI, e.FechaNacimiento, e.Direccion, d.Nombre AS Distrito, c.Nombre AS Centro, m.NumeroMesa, CASE WHEN e.Estado = 1 THEN 'Activo' ELSE 'Inactivo' END AS Estado FROM Electores e INNER JOIN Distritos d ON e.IdDistrito = d.IdDistrito INNER JOIN CentrosVotacion c ON e.IdCentro = c.IdCentro INNER JOIN MesasVotacion m ON e.IdMesa = m.IdMesa\r\n";
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);

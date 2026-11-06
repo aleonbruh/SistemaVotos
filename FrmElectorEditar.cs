@@ -14,11 +14,13 @@ namespace SistemaVotos
     public partial class FrmElectorEditar : Form
     {
         private int? idElector;
+        private int? idCentroAsignado;
+        private int? idMesaAsignada;
         public FrmElectorEditar(int? id = null)
         {
             InitializeComponent();
             this.idElector = id;
-            CargarCentros();
+            CargarDistritos();
 
             if (idElector.HasValue)
             {
@@ -28,43 +30,75 @@ namespace SistemaVotos
             else
             {
                 this.Text = "Nuevo Elector";
+                lblMensajeCentro.Text = "Se elegira automaticamente según el distrito seleccionado.";
+                lblMensajeMesa.Text = "Se elegira automaticamente según el distrito seleccionado.";
             }
         }
 
-        private void CargarCentros()
+        private void CargarDistritos()
         {
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
-                string query = "SELECT IdCentro, Nombre FROM CentrosVotacion WHERE Estado = 1";
+                string query = "SELECT IdDistrito, Nombre FROM Distritos";
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                cmbCentro.DisplayMember = "Nombre";
-                cmbCentro.ValueMember = "IdCentro";
-                cmbCentro.DataSource = dt;
+                cmbDistrito.DisplayMember = "Nombre";
+                cmbDistrito.ValueMember = "IdDistrito";
+                cmbDistrito.DataSource = dt;
             }
         }
 
-        private void CargarMesas(int idCentro)
+        // Asigar centro y mesa de votación según el distrito seleccionado
+        private void cmbDistrito_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cmbDistrito.SelectedValue == null) return;
+
+            int idDistrito = Convert.ToInt32(cmbDistrito.SelectedValue);
+
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
-                string query = "SELECT IdMesa, NumeroMesa FROM MesasVotacion WHERE IdCentro = @idCentro AND Estado = 1";
-                SqlDataAdapter da = new SqlDataAdapter(query, con);
-                da.SelectCommand.Parameters.AddWithValue("@idCentro", idCentro);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                cmbMesa.DisplayMember = "NumeroMesa";
-                cmbMesa.ValueMember = "IdMesa";
-                cmbMesa.DataSource = dt;
-            }
-        }
+                con.Open();
 
-        private void cmbCentro_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbCentro.SelectedValue != null && int.TryParse(cmbCentro.SelectedValue.ToString(), out int idCentro))
-            {
-                CargarMesas(idCentro);
+                SqlCommand cmdCentro = new SqlCommand("SELECT TOP 1 IdCentro, Nombre FROM CentrosVotacion WHERE IdDistrito = @idDistrito AND Estado = 1 ORDER BY NEWID()", con);
+                cmdCentro.Parameters.AddWithValue("@idDistrito", idDistrito);
+                using (SqlDataReader readerCentro = cmdCentro.ExecuteReader())
+                {
+                    if (readerCentro.Read())
+                    {
+                        idCentroAsignado = Convert.ToInt32(readerCentro["IdCentro"]);
+                        txtCentro.Text = readerCentro["Nombre"].ToString();
+                    }
+                    else
+                    {
+                        idCentroAsignado = null;
+                        lblMensajeCentro.Text = "No hay centros de votación activos en este distrito.";
+                    }
+                }
+
+                if (idCentroAsignado.HasValue)
+                {
+                    SqlCommand cmdMesa = new SqlCommand("SELECT TOP 1 IdMesa, NumeroMesa FROM MesasVotacion WHERE IdCentro = @idCentro AND Estado = 1 ORDER BY NEWID()", con);
+                    cmdMesa.Parameters.AddWithValue("@idCentro", idCentroAsignado.Value);
+                    using (SqlDataReader readerMesa = cmdMesa.ExecuteReader())
+                    {
+                        if (readerMesa.Read())
+                        {
+                            idMesaAsignada = Convert.ToInt32(readerMesa["IdMesa"]);
+                            txtMesa.Text = "Mesa " + readerMesa["NumeroMesa"].ToString();
+                        }
+                        else
+                        {
+                            idMesaAsignada = null;
+                            lblMensajeMesa.Text = "No hay mesas de votación activas en este centro.";
+                        }
+                    }
+                }
+                else
+                {
+                    idMesaAsignada = null;
+                    lblMensajeMesa.Text = "No se puede asignar una mesa sin un centro de votación.";
+                }
             }
         }
 
@@ -72,7 +106,7 @@ namespace SistemaVotos
         {
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
-                string query = "SELECT NombreCompleto, DUI, FechaNacimiento, Direccion, IdCentro, IdMesa FROM Electores WHERE IdElector = @id";
+                string query = "SELECT NombreCompleto, DUI, FechaNacimiento, Direccion, IdDistrito, IdCentro, IdMesa FROM Electores WHERE IdElector = @id";
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@id", idElector.Value);
@@ -85,8 +119,38 @@ namespace SistemaVotos
                             txtDUI.Text = reader["DUI"].ToString();
                             dtpFechaNacimiento.Value = Convert.ToDateTime(reader["FechaNacimiento"]);
                             txtDireccion.Text = reader["Direccion"].ToString();
-                            cmbCentro.SelectedValue = reader["IdCentro"];
-                            cmbMesa.SelectedValue = reader["IdMesa"];
+                            cmbDistrito.SelectedValue = Convert.ToInt32(reader["IdDistrito"]);
+
+                            int idCentro = Convert.ToInt32(reader["IdCentro"]);
+                            int idMesa = Convert.ToInt32(reader["IdMesa"]);
+                            idCentroAsignado = idCentro;
+                            idMesaAsignada = idMesa;
+                            CentroYMesa(idCentro, idMesa);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void CentroYMesa(int idCentro, int idMesa)
+        {
+            using (SqlConnection con = Conexion.ObtenerConexion())
+            {
+                string query = @"SELECT c.Nombre AS Centro, m.NumeroMesa
+                                 FROM CentrosVotacion c
+                                 INNER JOIN MesasVotacion m ON c.IdCentro = m.IdCentro
+                                 WHERE c.IdCentro = @idCentro AND m.IdMesa = @idMesa";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@idCentro", idCentro);
+                    cmd.Parameters.AddWithValue("@idMesa", idMesa);
+                    con.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            txtCentro.Text = reader["Centro"].ToString();
+                            txtMesa.Text = "Mesa " + reader["NumeroMesa"].ToString();
                         }
                     }
                 }
@@ -95,9 +159,15 @@ namespace SistemaVotos
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtDUI.Text) || string.IsNullOrWhiteSpace(txtDireccion.Text) || cmbCentro.SelectedValue == null || cmbMesa.SelectedValue == null || dtpFechaNacimiento.Value == DateTime.MinValue)
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtDUI.Text) || string.IsNullOrWhiteSpace(txtDireccion.Text) || cmbDistrito.SelectedValue == null)
             {
                 MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!idElector.HasValue && (!idCentroAsignado.HasValue || !idMesaAsignada.HasValue))
+            {
+                MessageBox.Show("No se puede asignar un centro o mesa de votación. Por favor, seleccione un distrito con centros y mesas activas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -123,11 +193,11 @@ namespace SistemaVotos
                 string query;
                 if (idElector.HasValue)
                 {
-                    query = "UPDATE Electores SET NombreCompleto = @nombre, DUI = @dui, FechaNacimiento = @fechaNacimiento, Direccion = @direccion, IdCentro = @idCentro, IdMesa = @idMesa WHERE IdElector = @id";
+                    query = "UPDATE Electores SET NombreCompleto = @nombre, DUI = @dui, FechaNacimiento = @fechaNacimiento, Direccion = @direccion, IdDistrito = @idDistrito, IdCentro = @idCentro, IdMesa = @idMesa WHERE IdElector = @id";
                 }
                 else
                 {
-                    query = "INSERT INTO Electores (NombreCompleto, DUI, FechaNacimiento, Direccion, IdCentro, IdMesa, Estado) VALUES (@nombre, @dui, @fechaNacimiento, @direccion, @idCentro, @idMesa, 1)";
+                    query = "INSERT INTO Electores (NombreCompleto, DUI, FechaNacimiento, Direccion, IdDistrito, IdCentro, IdMesa, Estado) VALUES (@nombre, @dui, @fechaNacimiento, @direccion, @idDistrito, @idCentro, @idMesa, 1)";
                 }
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
@@ -135,8 +205,9 @@ namespace SistemaVotos
                     cmd.Parameters.AddWithValue("@dui", txtDUI.Text);
                     cmd.Parameters.AddWithValue("@fechaNacimiento", dtpFechaNacimiento.Value);
                     cmd.Parameters.AddWithValue("@direccion", txtDireccion.Text);
-                    cmd.Parameters.AddWithValue("@idCentro", cmbCentro.SelectedValue);
-                    cmd.Parameters.AddWithValue("@idMesa", cmbMesa.SelectedValue);
+                    cmd.Parameters.AddWithValue("@idDistrito", cmbDistrito.SelectedValue);
+                    cmd.Parameters.AddWithValue("@idCentro", idCentroAsignado);
+                    cmd.Parameters.AddWithValue("@idMesa", idMesaAsignada);
                     if (idElector.HasValue)
                     {
                         cmd.Parameters.AddWithValue("@id", idElector.Value);

@@ -36,6 +36,7 @@ namespace SistemaVotos
                 DataTable dtAlcaldes = dt.Clone();
                 DataTable dtDiputados = dt.Clone();
 
+                // Ingresa los candidatos en las tablas correspondientes según su tipo de elección
                 foreach (DataRow row in dt.Rows)
                 {
                     if (row["TipoEleccion"].ToString() == "Alcalde")
@@ -137,6 +138,7 @@ namespace SistemaVotos
                 }
             }
         }
+         
 
         private void InsertarVoto(SqlConnection con, SqlTransaction tran, string tipo, int? idCandidato, bool valido)
         {
@@ -166,6 +168,8 @@ namespace SistemaVotos
                 MessageBox.Show("Por favor, busque un elector antes de votar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            // Booleanos para determinar si el elector ya voto por cada tipo de eleccion
             bool hayAlcalde = !alcaldeVotado && (rbNuloAlcaldes.Checked || cmbCandidatosAlcaldes.SelectedValue != null);
             bool hayDiputado = !diputadoVotado && (rbNuloDiputados.Checked || cmbCandidatosDiputados.SelectedValue != null);
 
@@ -203,6 +207,7 @@ namespace SistemaVotos
                     return;
                 }
             }
+            // Registrar voto y notificacion
             MessageBox.Show("Voto registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Notificaciones.Guardar("Voto", $"El usuario {SesionActual.Usuario} ha registrado un voto para el elector {txtNombre.Text}.");
             LimpiarTodo();

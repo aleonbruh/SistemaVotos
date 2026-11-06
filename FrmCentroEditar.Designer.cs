@@ -34,6 +34,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.cmbDistrito = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -54,7 +56,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(28, 79);
+            this.btnAceptar.Location = new System.Drawing.Point(28, 115);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 2;
@@ -80,7 +82,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(109, 79);
+            this.btnCancelar.Location = new System.Drawing.Point(109, 115);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 5;
@@ -88,11 +90,30 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // cmbDistrito
+            // 
+            this.cmbDistrito.FormattingEnabled = true;
+            this.cmbDistrito.Location = new System.Drawing.Point(93, 79);
+            this.cmbDistrito.Name = "cmbDistrito";
+            this.cmbDistrito.Size = new System.Drawing.Size(233, 21);
+            this.cmbDistrito.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(25, 82);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Distrito:";
+            // 
             // FrmCentroEditar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 128);
+            this.ClientSize = new System.Drawing.Size(373, 159);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cmbDistrito);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.label2);
@@ -114,5 +135,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.ComboBox cmbDistrito;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -20,10 +20,10 @@ namespace SistemaVotos
 
         private void FrmMesas_Load(object sender, EventArgs e)
         {
-            CargarCandidatos();
+            CargarMesas();
         }
 
-        private void CargarCandidatos()
+        private void CargarMesas()
         {
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
@@ -55,7 +55,7 @@ namespace SistemaVotos
             using (FrmMesaNueva frm = new FrmMesaNueva())
             {
                 frm.ShowDialog();
-                CargarCandidatos();
+                CargarMesas();
             }
         }
 
@@ -79,13 +79,13 @@ namespace SistemaVotos
                         cmd.ExecuteNonQuery();
                     }
                 }
-                CargarCandidatos();
+                CargarMesas();
             }
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            CargarCandidatos();
+            CargarMesas();
         }
     }
 }

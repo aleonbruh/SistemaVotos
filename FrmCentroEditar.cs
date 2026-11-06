@@ -19,6 +19,7 @@ namespace SistemaVotos
         {
             InitializeComponent();
             this.idCentro = idCentro;
+            CargarDistritos();
             if (idCentro.HasValue)
             {
                 this.Text = "Editar Centro de Votación";
@@ -30,11 +31,26 @@ namespace SistemaVotos
             }
         }
 
+        private void CargarDistritos()
+        {
+            using (SqlConnection con = Conexion.ObtenerConexion())
+            {
+                string query = "SELECT IdDistrito, Nombre FROM Distritos ORDER BY Nombre";
+                SqlDataAdapter da = new SqlDataAdapter(query, con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                cmbDistrito.DataSource = dt;
+                cmbDistrito.DisplayMember = "Nombre";
+                cmbDistrito.ValueMember = "IdDistrito";
+                cmbDistrito.SelectedIndex = -1;
+            }
+        }
+
         private void CargarDatos()
         {
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
-                string query = "SELECT Nombre, Direccion FROM CentrosVotacion WHERE IdCentro = @id";
+                string query = "SELECT Nombre, Direccion, IdDistrito FROM CentrosVotacion WHERE IdCentro = @id";
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@id", idCentro.Value);
@@ -45,6 +61,8 @@ namespace SistemaVotos
                         {
                             txtNombre.Text = reader["Nombre"].ToString();
                             txtDireccion.Text = reader["Direccion"].ToString();
+                            int idDistrito = Convert.ToInt32(reader["IdDistrito"]);
+                            cmbDistrito.SelectedValue = idDistrito;
                         }
                     }
                 }
@@ -53,9 +71,9 @@ namespace SistemaVotos
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtDireccion.Text))
+            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtDireccion.Text) || cmbDistrito.SelectedIndex == -1)
             {
-                MessageBox.Show("Ingrese nombre y dirección.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ingrese nombre, dirección y seleccione un distrito.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -79,19 +97,19 @@ namespace SistemaVotos
 
                 string query;
                 if (idCentro.HasValue)
-                    query = "UPDATE CentrosVotacion SET Nombre = @nombre, Direccion = @direccion WHERE IdCentro = @id";
+                    query = "UPDATE CentrosVotacion SET Nombre = @nombre, Direccion = @direccion, IdDistrito = @idDistrito WHERE IdCentro = @id";
                 else
-                    query = "INSERT INTO CentrosVotacion (Nombre, Direccion, Estado) VALUES (@nombre, @direccion, 1)";
+                    query = "INSERT INTO CentrosVotacion (Nombre, Direccion, IdDistrito, Estado) VALUES (@nombre, @direccion, @idDistrito, 1)";
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@nombre", txtNombre.Text);
                     cmd.Parameters.AddWithValue("@direccion", txtDireccion.Text);
+                    cmd.Parameters.AddWithValue("@idDistrito", cmbDistrito.SelectedValue);
                     if (idCentro.HasValue)
                         cmd.Parameters.AddWithValue("@id", idCentro.Value);
                     cmd.ExecuteNonQuery();
                 }
             }
-            this.Close();
             MessageBox.Show("Centro de votación guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Notificaciones.Guardar("Centro de Votación", $"El usuario {SesionActual.Usuario} ha {(idCentro.HasValue ? "editado" : "creado")} el centro de votación {txtNombre.Text}.");
             this.DialogResult = DialogResult.OK;

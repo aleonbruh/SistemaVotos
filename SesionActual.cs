@@ -12,5 +12,14 @@ namespace SistemaVotos
         public static string NombreCompleto { get; set; }
         public static string Usuario {  get; set; }
         public static string Rol {  get; set; }
+
+        static SesionActual()
+        {
+            // Valores por defecto al iniciar
+            IdUsuario = 0;
+            NombreCompleto = string.Empty;
+            Usuario = string.Empty;
+            Rol = string.Empty;
+        }
     }
 }
