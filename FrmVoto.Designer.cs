@@ -38,23 +38,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
-            this.grpAlcaldes = new System.Windows.Forms.GroupBox();
-            this.lblEstadoAlcaldes = new System.Windows.Forms.Label();
-            this.rbNuloAlcaldes = new System.Windows.Forms.RadioButton();
-            this.rbValidoAlcaldes = new System.Windows.Forms.RadioButton();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cmbCandidatosAlcaldes = new System.Windows.Forms.ComboBox();
-            this.grpDiputados = new System.Windows.Forms.GroupBox();
-            this.lblEstadoDiputados = new System.Windows.Forms.Label();
-            this.rbNuloDiputados = new System.Windows.Forms.RadioButton();
-            this.rbValidoDiputados = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cmbCandidatosDiputados = new System.Windows.Forms.ComboBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.cmbTipoEleccion = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.grpElector.SuspendLayout();
-            this.grpAlcaldes.SuspendLayout();
-            this.grpDiputados.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpElector
@@ -153,140 +141,13 @@
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(177, 20);
             this.txtBusqueda.TabIndex = 0;
-            // 
-            // grpAlcaldes
-            // 
-            this.grpAlcaldes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpAlcaldes.Controls.Add(this.lblEstadoAlcaldes);
-            this.grpAlcaldes.Controls.Add(this.rbNuloAlcaldes);
-            this.grpAlcaldes.Controls.Add(this.rbValidoAlcaldes);
-            this.grpAlcaldes.Controls.Add(this.label4);
-            this.grpAlcaldes.Controls.Add(this.cmbCandidatosAlcaldes);
-            this.grpAlcaldes.Location = new System.Drawing.Point(12, 203);
-            this.grpAlcaldes.Name = "grpAlcaldes";
-            this.grpAlcaldes.Size = new System.Drawing.Size(331, 88);
-            this.grpAlcaldes.TabIndex = 1;
-            this.grpAlcaldes.TabStop = false;
-            this.grpAlcaldes.Text = "Votacion Alcaldes";
-            // 
-            // lblEstadoAlcaldes
-            // 
-            this.lblEstadoAlcaldes.AutoSize = true;
-            this.lblEstadoAlcaldes.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblEstadoAlcaldes.Location = new System.Drawing.Point(178, 57);
-            this.lblEstadoAlcaldes.Name = "lblEstadoAlcaldes";
-            this.lblEstadoAlcaldes.Size = new System.Drawing.Size(0, 13);
-            this.lblEstadoAlcaldes.TabIndex = 9;
-            // 
-            // rbNuloAlcaldes
-            // 
-            this.rbNuloAlcaldes.AutoSize = true;
-            this.rbNuloAlcaldes.Location = new System.Drawing.Point(100, 55);
-            this.rbNuloAlcaldes.Name = "rbNuloAlcaldes";
-            this.rbNuloAlcaldes.Size = new System.Drawing.Size(72, 17);
-            this.rbNuloAlcaldes.TabIndex = 8;
-            this.rbNuloAlcaldes.Text = "Voto Nulo";
-            this.rbNuloAlcaldes.UseVisualStyleBackColor = true;
-            // 
-            // rbValidoAlcaldes
-            // 
-            this.rbValidoAlcaldes.AutoSize = true;
-            this.rbValidoAlcaldes.Checked = true;
-            this.rbValidoAlcaldes.Location = new System.Drawing.Point(15, 55);
-            this.rbValidoAlcaldes.Name = "rbValidoAlcaldes";
-            this.rbValidoAlcaldes.Size = new System.Drawing.Size(79, 17);
-            this.rbValidoAlcaldes.TabIndex = 7;
-            this.rbValidoAlcaldes.TabStop = true;
-            this.rbValidoAlcaldes.Text = "Voto Valido";
-            this.rbValidoAlcaldes.UseVisualStyleBackColor = true;
-            this.rbValidoAlcaldes.CheckedChanged += new System.EventHandler(this.rbValidoAlcaldes_CheckedChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 30);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Seleccione un Candidato:";
-            // 
-            // cmbCandidatosAlcaldes
-            // 
-            this.cmbCandidatosAlcaldes.FormattingEnabled = true;
-            this.cmbCandidatosAlcaldes.Location = new System.Drawing.Point(147, 22);
-            this.cmbCandidatosAlcaldes.Name = "cmbCandidatosAlcaldes";
-            this.cmbCandidatosAlcaldes.Size = new System.Drawing.Size(121, 21);
-            this.cmbCandidatosAlcaldes.TabIndex = 0;
-            // 
-            // grpDiputados
-            // 
-            this.grpDiputados.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpDiputados.Controls.Add(this.lblEstadoDiputados);
-            this.grpDiputados.Controls.Add(this.rbNuloDiputados);
-            this.grpDiputados.Controls.Add(this.rbValidoDiputados);
-            this.grpDiputados.Controls.Add(this.label5);
-            this.grpDiputados.Controls.Add(this.cmbCandidatosDiputados);
-            this.grpDiputados.Location = new System.Drawing.Point(12, 297);
-            this.grpDiputados.Name = "grpDiputados";
-            this.grpDiputados.Size = new System.Drawing.Size(331, 88);
-            this.grpDiputados.TabIndex = 9;
-            this.grpDiputados.TabStop = false;
-            this.grpDiputados.Text = "Votacion Diputados";
-            // 
-            // lblEstadoDiputados
-            // 
-            this.lblEstadoDiputados.AutoSize = true;
-            this.lblEstadoDiputados.Location = new System.Drawing.Point(178, 57);
-            this.lblEstadoDiputados.Name = "lblEstadoDiputados";
-            this.lblEstadoDiputados.Size = new System.Drawing.Size(0, 13);
-            this.lblEstadoDiputados.TabIndex = 10;
-            // 
-            // rbNuloDiputados
-            // 
-            this.rbNuloDiputados.AutoSize = true;
-            this.rbNuloDiputados.Location = new System.Drawing.Point(100, 55);
-            this.rbNuloDiputados.Name = "rbNuloDiputados";
-            this.rbNuloDiputados.Size = new System.Drawing.Size(72, 17);
-            this.rbNuloDiputados.TabIndex = 8;
-            this.rbNuloDiputados.Text = "Voto Nulo";
-            this.rbNuloDiputados.UseVisualStyleBackColor = true;
-            // 
-            // rbValidoDiputados
-            // 
-            this.rbValidoDiputados.AutoSize = true;
-            this.rbValidoDiputados.Checked = true;
-            this.rbValidoDiputados.Location = new System.Drawing.Point(15, 55);
-            this.rbValidoDiputados.Name = "rbValidoDiputados";
-            this.rbValidoDiputados.Size = new System.Drawing.Size(79, 17);
-            this.rbValidoDiputados.TabIndex = 7;
-            this.rbValidoDiputados.TabStop = true;
-            this.rbValidoDiputados.Text = "Voto Valido";
-            this.rbValidoDiputados.UseVisualStyleBackColor = true;
-            this.rbValidoDiputados.CheckedChanged += new System.EventHandler(this.rbValidoDiputados_CheckedChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 30);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(129, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Seleccione un Candidato:";
-            // 
-            // cmbCandidatosDiputados
-            // 
-            this.cmbCandidatosDiputados.FormattingEnabled = true;
-            this.cmbCandidatosDiputados.Location = new System.Drawing.Point(147, 22);
-            this.cmbCandidatosDiputados.Name = "cmbCandidatosDiputados";
-            this.cmbCandidatosDiputados.Size = new System.Drawing.Size(121, 21);
-            this.cmbCandidatosDiputados.TabIndex = 0;
+            this.txtBusqueda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusqueda_KeyPress);
             // 
             // btnAceptar
             // 
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptar.Location = new System.Drawing.Point(12, 391);
+            this.btnAceptar.Location = new System.Drawing.Point(99, 262);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 10;
@@ -298,7 +159,7 @@
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(93, 391);
+            this.btnCancelar.Location = new System.Drawing.Point(180, 262);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 11;
@@ -306,25 +167,40 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // cmbTipoEleccion
+            // 
+            this.cmbTipoEleccion.FormattingEnabled = true;
+            this.cmbTipoEleccion.Location = new System.Drawing.Point(84, 229);
+            this.cmbTipoEleccion.Name = "cmbTipoEleccion";
+            this.cmbTipoEleccion.Size = new System.Drawing.Size(192, 21);
+            this.cmbTipoEleccion.TabIndex = 12;
+            this.cmbTipoEleccion.SelectedIndexChanged += new System.EventHandler(this.cmbTipoEleccion_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(81, 213);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(187, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Eliga las elecciones que se mostraran:";
+            // 
             // FrmVoto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(361, 428);
+            this.ClientSize = new System.Drawing.Size(361, 310);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cmbTipoEleccion);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.grpDiputados);
-            this.Controls.Add(this.grpAlcaldes);
             this.Controls.Add(this.grpElector);
             this.Name = "FrmVoto";
             this.Text = "Registrar Voto";
             this.grpElector.ResumeLayout(false);
             this.grpElector.PerformLayout();
-            this.grpAlcaldes.ResumeLayout(false);
-            this.grpAlcaldes.PerformLayout();
-            this.grpDiputados.ResumeLayout(false);
-            this.grpDiputados.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -336,23 +212,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox grpAlcaldes;
-        private System.Windows.Forms.RadioButton rbNuloAlcaldes;
-        private System.Windows.Forms.RadioButton rbValidoAlcaldes;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cmbCandidatosAlcaldes;
-        private System.Windows.Forms.GroupBox grpDiputados;
-        private System.Windows.Forms.RadioButton rbNuloDiputados;
-        private System.Windows.Forms.RadioButton rbValidoDiputados;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cmbCandidatosDiputados;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox txtMesa;
         private System.Windows.Forms.TextBox txtCentro;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblEstadoAlcaldes;
-        private System.Windows.Forms.Label lblEstadoDiputados;
+        private System.Windows.Forms.ComboBox cmbTipoEleccion;
+        private System.Windows.Forms.Label label4;
     }
 }

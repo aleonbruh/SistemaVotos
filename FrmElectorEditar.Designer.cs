@@ -93,12 +93,12 @@
             // 
             this.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaNacimiento.Location = new System.Drawing.Point(27, 120);
-            this.dtpFechaNacimiento.MaxDate = new System.DateTime(2026, 10, 8, 0, 0, 0, 0);
+            this.dtpFechaNacimiento.MaxDate = new System.DateTime(2009, 1, 30, 0, 0, 0, 0);
             this.dtpFechaNacimiento.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(229, 20);
             this.dtpFechaNacimiento.TabIndex = 6;
-            this.dtpFechaNacimiento.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaNacimiento.Value = new System.DateTime(2005, 9, 15, 0, 0, 0, 0);
             // 
             // txtDireccion
             // 

@@ -112,7 +112,7 @@ namespace SistemaVotos
 
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Return)
+            if ((e.KeyChar == (char)Keys.Return) || (e.KeyChar == (char)Keys.Tab))
             {
                 txtContrasena.Focus();
                 e.Handled = true;

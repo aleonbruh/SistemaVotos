@@ -208,6 +208,12 @@
     <Compile Include="FrmVoto.Designer.cs">
       <DependentUpon>FrmVoto.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmVotoGuiado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVotoGuiado.Designer.cs">
+      <DependentUpon>FrmVotoGuiado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmVoto.resx">
       <DependentUpon>FrmVoto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVotoGuiado.resx">
+      <DependentUpon>FrmVotoGuiado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
